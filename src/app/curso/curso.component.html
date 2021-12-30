@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="alert alert-success" role="alert" [hidden]="!salvo"> <!-- *ngIf="salvo"> -->
+      CPF: <strong>{{cpf}}</strong><br>
+      Nome do Cliente : <strong> {{nome}} </strong><br>
+      Idade: <strong>{{idade}}</strong>
+  </div>
+
+  <div class="form-group">
+      <label for="clienteNome">Nome do Cliente</label>
+      <input type="text"
+              class="form-control"
+              id="nomeCliente"
+              #nomeInput
+              placeholder="Informe o nome do cliente"
+              [(ngModel)]="nome">
+<!--
+              (keyup)="nome=nomeInput.value"
+              [value]="nome" >
+-->
+  </div>
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input type="text"
+            name="cpf"
+            id="cpf"
+            class="form-control"
+            [(ngModel)]="cpf"
+            placeholder="Informe o CPF do cliente">
+  </div>
+
+  <div class="form-group">
+    <label for="idade">Idade</label>
+    <input type="text"
+            name="idade"
+            id="idade"
+            class="form-control"
+            placeholder="Informe a idade do cliente"
+            [(ngModel)]="idade">
+  </div>
+
+  <button type="button"
+          class="btn btn-primary"
+          (click)="salvar(nomeInput.value)"
+          [disabled]="nomeInput.value.length==0">Salvar</button>
+</div>

@@ -1,0 +1,24 @@
+<div class="container" >
+  <div class="alert alert-success" role="alert" [hidden]="!salvo">
+      Nome do Cliente : <strong> {{nome}} </strong>
+  </div>
+
+  <div class="form-group">
+      <label for="clienteNome">Nome do Cliente</label>
+      <input type="text" class="form-control" id="nomeCliente" #nomeInput [(ngModel)]="nome" (focus)="salvo=false">
+      <small id="emailHelp" class="form-text text-muted">Informe o nome do cliente</small>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="salvar(nomeInput.value)" [disabled]="nomeInput.value.length == 0">Salvar</button>
+
+  <div class="row" style="margin-top: 20px;" >
+      <div class="col-2" *ngFor="let cliente of clientes" >
+      <div class="card">
+          <img src="https://randomuser.me/api/portraits/women/{{cliente.id}}.jpg">
+          <div class="card-body">
+              {{cliente.nome}}
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
